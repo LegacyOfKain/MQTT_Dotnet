@@ -64,3 +64,13 @@ Ensure all NuGet packages are restored before running the projects.
 
 - The projects use HiveMQ's public MQTT broker by default. For production use, consider using a private MQTT broker.
 - Sparkplug B is an MQTT-based protocol for Industrial IoT (IIoT) applications. The implementations here are basic examples and may not cover all aspects of the Sparkplug B specification.
+
+## Project Relations
+
+The relationships between the projects in this solution are illustrated in the following diagram:
+
+![Project Relations](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/LegacyOfKain/MQTT_Dotnet/master/Relations.iuml)
+
+This diagram provides a visual representation of how the different projects in this repository interact with each other and the MQTT broker.
+
+## Configuration

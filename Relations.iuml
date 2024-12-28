@@ -1,0 +1,33 @@
+@startuml MQTT_Dotnet_Projects
+
+skinparam componentStyle uml2
+skinparam component {
+  FontSize 14
+  FontColor #000000
+  BackgroundColor #EEEEEE
+  BorderColor #000000
+}
+
+[MQTT_Producer] as Producer
+[MQTT_Consumer] as Consumer
+[MQTT_Producer_SparkplugB_With_MQTTNet_Only] as ProducerSparkplugB
+[MQTT_Consumer_SparkplugB_With_MQTTNet_Only] as ConsumerSparkplugB
+[MQTT_Producer_SparkplugB_With_SparkPlugNet] as ProducerSparkPlugNet
+
+cloud "MQTT Broker" as Broker
+
+Producer -right-> Broker : Publishes to
+Broker -right-> Consumer : Subscribes to
+
+ProducerSparkplugB -up-> Broker : Publishes Sparkplug B messages to
+Broker -down-> ConsumerSparkplugB : Subscribes to Sparkplug B messages
+
+ProducerSparkPlugNet -up-> Broker : Publishes Sparkplug B messages to
+
+note bottom of Producer : Basic MQTT Producer
+note bottom of Consumer : Basic MQTT Consumer
+note top of ProducerSparkplugB : Sparkplug B Producer\nusing MQTTnet
+note top of ConsumerSparkplugB : Sparkplug B Consumer\nusing MQTTnet
+note top of ProducerSparkPlugNet : Sparkplug B Producer\nusing SparkPlugNet
+
+@enduml
