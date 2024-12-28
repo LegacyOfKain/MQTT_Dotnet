@@ -69,7 +69,7 @@ Ensure all NuGet packages are restored before running the projects.
 
 The relationships between the projects in this solution are illustrated in the following diagram:
 
-![Project Relations](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/LegacyOfKain/MQTT_Dotnet/master/Relations.iuml)
+![Project Relations](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/legacyofkain/MQTT_Dotnet/master/Relations.iuml)
 
 This diagram provides a visual representation of how the different projects in this repository interact with each other and the MQTT broker.
 
