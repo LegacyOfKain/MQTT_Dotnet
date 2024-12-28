@@ -17,6 +17,7 @@ mqttClient.ApplicationMessageReceivedAsync += e =>
 {
     Console.WriteLine("On ApplicationMessageReceivedAsync");
     var payloadBytes = e.ApplicationMessage.PayloadSegment;
+    Console.WriteLine("payloadBytes = "+Encoding.UTF8.GetString(payloadBytes.ToArray()));
     var message = SensorData.Parser.ParseFrom(payloadBytes);
     Console.WriteLine($"Received: {e.ApplicationMessage.Topic} - Timestamp: {message.Timestamp}, SensorId: {message.SensorId}, Value: {message.Value}");
     return Task.CompletedTask;

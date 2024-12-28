@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT_Producer_SparkplugB_Wi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT_Consumer_SparkplugB_With_MQTTNet_Only", "MQTT_Consumer_SparkplugB_With_MQTTNet_Only\MQTT_Consumer_SparkplugB_With_MQTTNet_Only.csproj", "{E2420C04-2104-4C5A-9AC9-8689AA38DD93}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA63AC9E-DA3B-4B4B-B775-790F91A3591F}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
