@@ -1,20 +1,23 @@
 ﻿using MQTTnet;
-using MQTTnet.Client;
+
+int messageCount = 0; // Add this at the top of your try block
 
 try
 {
-    var mqttFactory = new MqttFactory();
+    var mqttFactory = new MqttClientFactory();
     var mqttClient = mqttFactory.CreateMqttClient();
     var mqttClientOptions = new MqttClientOptionsBuilder()
         .WithTcpServer("broker.hivemq.com", 8883)  // 8883 is the default MQTT TLS port
         .WithClientId("MyConsumerClient")
-        .WithCleanSession()
+        .WithCleanStart()
+        .WithKeepAlivePeriod(TimeSpan.FromSeconds(30)) // this is very important for mqtt.net v5
         .WithTlsOptions(o => o.UseTls())
         .Build();
 
     mqttClient.ApplicationMessageReceivedAsync += e =>
     {
-        Console.WriteLine($"Received message: {System.Text.Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}");
+        Interlocked.Increment(ref messageCount); // Thread-safe increment
+        Console.WriteLine($"Received message #{messageCount}: {e.ApplicationMessage.ConvertPayloadToString}");
         return Task.CompletedTask;
     };
 
