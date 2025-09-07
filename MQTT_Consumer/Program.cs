@@ -42,7 +42,19 @@ try
         .Build());
 
     Console.WriteLine("MQTT Consumer started. Press any key to exit.");
-    Console.ReadKey();
+
+    // Replace Console ReadKey 
+    using var cts = new CancellationTokenSource();
+    Console.CancelKeyPress += (_, e) => { e.Cancel = true; cts.Cancel();  };
+    try
+    {
+        await Task.Delay(Timeout.Infinite, cts.Token); // Wait until Ctrl+C
+    }
+    catch (TaskCanceledException)
+    {
+        // Expected when Ctrl+C is pressed
+        Console.WriteLine( "Consumer stopped manually");
+    }
 
     await mqttClient.DisconnectAsync();
 }
